@@ -1,0 +1,61 @@
+
+%---------------------------------------------------------
+\section{Reglas de Negocio}
+
+\begin{BussinesRule}{BR128}{Determinar si un Paciente puede recibir consulta.} 
+	\BRitem[Descripción:] El paciente requiere llegar 10 min. antes de que inicie su consulta y pagarla.
+	\BRitem[Tipo:] Restricción de integridad y operacion.
+	\BRitem[Nivel:] Obligatorio.
+\end{BussinesRule}
+\begin{BussinesRule}{BR129}{Duraci\'on de la consulta.} 
+	\BRitem[Descripción:] Cada consulta m\'edica tiene una duraci\'on m\'axima de 30 minutos.
+	\BRitem[Tipo:] Restricción de operacion.
+	\BRitem[Nivel:] Obligatorio.
+\end{BussinesRule}
+
+\begin{BussinesRule}{BR131}{Determinar si un Paciente cuenta historial medico}
+	\BRitem[Descripción:] Si es la primera vez que el paciente asiste a la clinica debe llenar su historial medico.
+	\BRitem[Tipo:] Restricción de operación.
+	\BRitem[Nivel:] Obligatorio.
+\end{BussinesRule}
+\begin{BussinesRule}{BR130}{Modificaci\'on de historial m\'edico}
+	\BRitem[Descripción:] En cada consulta, el expediente m\'edico del paciente puede ser actualizado, agregando notas.
+	\BRitem[Tipo:] Restricción de operación.
+	\BRitem[Nivel:] Opcional.
+\end{BussinesRule}
+\begin{BussinesRule}{BR111}{Pacientes de espera}
+	\BRitem[Descripción:] Si una consulta no es pagada a tiempo, la recepcionista tomar\'a la decisi\'on de dejar pasar a uno de los pacientes de espera a tal consulta, o no.
+	\BRitem[Tipo:] Restricción de operación.
+	\BRitem[Nivel:] Opcional.
+\end{BussinesRule}
+
+\begin{BussinesRule}{BR144}{Venta de medicamentos}
+	\BRitem[Descripción:] La venta de medicamentos puede realizarse sin receta pero s\'olo para los medicamentos no controlados, en caso de necesitar un antibiotico sera necesario presentar la receta original.
+	\BRitem[Tipo:] Restricción de operación.
+	\BRitem[Nivel:] Obligatorio.
+\end{BussinesRule}
+\begin{BussinesRule}{BR145}{Recibo de pago por medicamentos}
+	\BRitem[Descripción:] Al acudir a la farmacia para solicitar medicamentos, el paciente recibir\'a u recibo de pago, con el cual acudir\'a a pagar sus medicamentos en la caja, el cajero le sellar\'a el recibo, y finalmente el paciente entregar\'a el recibo sellado al dependiente de la farmacia y recoger\'a sus medicamentos y su receta, tambi\'en sellada de "`Abastecida"'.
+	\BRitem[Tipo:] Restricción de operación e interacci\'on.
+	\BRitem[Nivel:] Obligatorio.
+\end{BussinesRule}
+
+\begin{BussinesRule}{BR180}{Cobro de medicamentos}
+	\BRitem[Descripción:] Los servicios se cobran de la siguiente forma:
+		\begin{Citemize}
+			\item {\em Publico en general:} Se les cobran todos los servicios al 100\% de su costo.
+		\end{Citemize}
+	\BRitem[Sentencia:] $\forall~e~\in~\mathbb{E}\textrm{Pacientes}~\land~\forall~s~\in \mathbb{S}\textrm{Medicamentos}~\Rightarrow$
+		\begin{displaymath}
+			Costo(p,m) = \left\{ \begin{array}{ll}
+			s.costo & , si~e.tipo = \textrm{Publico general}
+			\end{array} \right.
+		\end{displaymath}
+
+	\BRitem[Tipo:] Cálculo.
+	\BRitem[Nivel:] Obligatorio.
+\end{BussinesRule}
+
+
+
+
